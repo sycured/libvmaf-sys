@@ -1,3 +1,4 @@
 [submodule "vmaf"]
 	path = vmaf
-	url = https://github.com/Netflix/vmaf.git
+	url = https://github.com/sycured/vmaf.git
+	branch = patched
