@@ -1,19 +1,32 @@
 [package]
 name = "libvmaf-sys"
-version = "0.2.0"
+version = "0.4.4"
 edition = "2021"
 description = "Library bindings for Netflix's VMAF"
-license = "MIT"
+license = "GPL-3.0-or-later"
 repository = "https://github.com/ThatNerdUKnow/libvmaf-sys"
 authors = ["Brandon Piña"]
-include = ["**/*.rs","Cargo.toml","Cargo.lock","vmaf/libvmaf","vmaf/model"]
+include = ["**/*.rs","Cargo.toml","Cargo.lock","vmaf/libvmaf","vmaf/model","vmaf/LICENSE","*.ini","wrapper.h"]
 readme = "readme.md"
 keywords = ["vmaf","video"]
+links = "vmaf"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
 
 [build-dependencies]
-meson-next = "1.0.1"
-bindgen = "0.63.0"
+meson-next = {version = "1.2.2", optional = true}
+bindgen = "0.69.1"
+pkg-config = "0.3.27"
+
+[toolchain]
+channel = "stable-gnu"
+
+[features]
+default = ["build"]
+static = []
+float = ["build"]
+avx512 = ["build"]
+build = ["dep:meson-next"]
+
